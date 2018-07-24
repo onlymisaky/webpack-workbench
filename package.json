@@ -1,0 +1,17 @@
+{
+  "name": "webpack-workbench",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onlymisaky/webpack-workbench.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "onlymisaky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onlymisaky/webpack-workbench/issues"
+  },
+  "homepage": "https://github.com/onlymisaky/webpack-workbench#readme"
+}
