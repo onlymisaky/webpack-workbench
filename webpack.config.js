@@ -8,6 +8,12 @@ const config = {
   entry: {
     login: './src/login.js',
     logout: './src/logout.js'
+  },
+  // entry: './src/login.js',
+  output: {
+    path: __dirname + '/dist',
+    filename: '[name].js',
+    publicPath: '/assets/'
   }
 }
 
