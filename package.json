@@ -8,10 +8,17 @@
   "keywords": [
     "webpack"
   ],
+  "scripts": {
+    "build": "webpack"
+  },
   "author": "onlymisaky",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/onlymisaky/webpack-workbench/issues"
   },
-  "homepage": "https://github.com/onlymisaky/webpack-workbench#readme"
+  "homepage": "https://github.com/onlymisaky/webpack-workbench#readme",
+  "devDependencies": {
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
+  }
 }
