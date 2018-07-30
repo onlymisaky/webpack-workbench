@@ -4,15 +4,15 @@ const path = require('path');
 /**
  * @type {webpack.Configuration}
  */
-const config = {
+const config =
+{
   entry: {
-    login: './src/login.js',
-    logout: './src/logout.js'
+    app: './src/main.js',
+    vendor: ['./src/lib/jquery.js', './src/lib/lodash.js'],
   },
-  // entry: './src/login.js',
   output: {
     path: __dirname + '/dist',
-    filename: '[name].js',
+    filename: '[name].bundle.js',
     publicPath: '/assets/'
   }
 }

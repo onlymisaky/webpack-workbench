@@ -1,4 +1,3 @@
+import $ from './lib/jquery';
 
-import { str1 } from './1'
-import { str2 } from './2';
-console.log(str1, str2, 'login.js');
+export const str = `我是 login.js ，我引入了 jQuery，版本号为：${$.fn.jquery}`;
