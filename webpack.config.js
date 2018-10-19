@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   entry: {
     index: './src/index.js',
@@ -51,8 +53,8 @@ module.exports = {
       use: [{
         loader: 'url-loader',
         options: {
-          limit: 10000, // 10KB 转换为base64
-          name: 'images/[name].[ext]' // 拷贝到 images 目录下
+          limit: 10000,
+          name: 'images/[name].[ext]'
         }
       }]
     },
@@ -61,9 +63,16 @@ module.exports = {
       use: [{
         loader: 'html-loader',
         options: {
-          minimize: true // 开启压缩
+          minimize: true
         }
       }]
     }]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      minify: true,
+      inject: 'body'
+    })
+  ]
 };
