@@ -1,6 +1,15 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
-module.exports = {
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+
+
+/**
+ * @type {webpack.Configuration}
+ */
+const webpackConfiguration = {
   entry: {
     index: './src/index.js',
   },
@@ -17,7 +26,8 @@ module.exports = {
     { test: /\.tsx?$/, use: 'ts-loader' },
     {
       test: /\.css$/,
-      use: ['style-loader',
+      use: [
+        MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
           options: { modules: true }
@@ -73,6 +83,18 @@ module.exports = {
       template: './src/index.html',
       minify: true,
       inject: 'body'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
+    }),
+    new OptimizeCssAssetsPlugin(),
+    new CleanWebpackPlugin('dist', {
+      root: __dirname,
+      verbose: true,
+      dry: false
     })
   ]
 };
+
+module.exports = webpackConfiguration;
