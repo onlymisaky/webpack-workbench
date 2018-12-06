@@ -3,8 +3,9 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const styleLoader = process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader';
 
 /**
  * @type {webpack.Configuration}
@@ -15,7 +16,7 @@ const webpackConfiguration = {
   },
   output: {
     path: __dirname + '/dist',
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [{
@@ -79,6 +80,8 @@ const webpackConfiguration = {
     }]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: true,
@@ -94,7 +97,15 @@ const webpackConfiguration = {
       verbose: true,
       dry: false
     })
-  ]
+  ],
+  devServer: {
+    hot: true,
+    inline: true,
+    port: 8080,
+    open: true,
+    historyApiFallback: true,
+    contentBase: 'static'
+  },
 };
 
 module.exports = webpackConfiguration;
