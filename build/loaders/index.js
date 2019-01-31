@@ -10,6 +10,13 @@ const javascript = {
   exclude: /node_modules/
 };
 
+/** @type {webpack.RuleSetRule} */
+const typescript = {
+  test: /\.tsx?$/,
+  loader: 'ts-loader'
+};
+
+
 /**
  * @type {webpack.RuleSetRule}
  */
@@ -59,6 +66,7 @@ const medias = {
  */
 let rules = [
   javascript,
+  typescript,
   html,
   image,
   font,

@@ -2,13 +2,16 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const { getNpmargv } = require('./utils');
 const rules = require('./loaders');
+
+const entry = getNpmargv('entry') || 'main.ts';
 
 /**
  * @type {webpack.Configuration}
  */
 const webpackCommonConfig = {
-  entry: './src/main.js',
+  entry: path.resolve('src/', entry),
   output: {
     path: path.resolve('dist'),
     filename: '[name].js'
@@ -18,7 +21,7 @@ const webpackCommonConfig = {
     alias: {
       '@': path.resolve('src')
     },
-    extensions: ['.js', '.json']
+    extensions: ['.js', '.json', ".ts", ".tsx"]
   },
   plugins: [
     new HtmlWebpackPlugin({
