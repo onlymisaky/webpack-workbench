@@ -21,11 +21,11 @@ const webpackCommonConfig = {
     alias: {
       '@': path.resolve('src')
     },
-    extensions: ['.js', '.json', ".ts", ".tsx"]
+    extensions: ['.js', '.json', '.ts', '.tsx']
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve('src/index.html'),
+      template: path.resolve('public/index.html'),
       inject: 'body',
       minify: {
         collapseWhitespace: true,
