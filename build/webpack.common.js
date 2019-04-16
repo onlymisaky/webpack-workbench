@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { getNpmargv } = require('./utils');
@@ -8,7 +7,7 @@ const rules = require('./loaders');
 const entry = getNpmargv('entry') || 'main.ts';
 
 /**
- * @type {webpack.Configuration}
+ * @type {import('webpack').Configuration}
  */
 const webpackCommonConfig = {
   entry: path.resolve('src/', entry),
