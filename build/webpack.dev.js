@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'development';
+process.env._MODE = 'development';
 
 const path = require('path');
 const webpack = require('webpack');
@@ -12,17 +12,19 @@ const environments = require('./../environments/development');
 const { getNpmargv } = require('./utils');
 
 const webpackDevConfig = merge(webpackCommonConfig, {
+  mode: 'production',
   devtool: 'cheap-module-eval-source-map',
-
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(environments),
+      'process.env': JSON.stringify({
+        ...environments,
+        ...{ NODE_ENV: 'development' }
+      }),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
   ],
-
   devServer: {
     clientLogLevel: 'warning',
     hot: true,

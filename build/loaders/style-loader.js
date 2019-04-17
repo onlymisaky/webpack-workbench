@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const mode = process.env.NODE_ENV;
+const mode = process.env._MODE;
 
 /**
  * @type {Array<import('webpack').RuleSetRule>}
